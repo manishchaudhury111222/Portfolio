@@ -71,9 +71,7 @@ export default function App() {
   ]);
   const terminalBottomRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    terminalBottomRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [terminalLogs]);
+
 
   // Terminal commands interpreter
   const handleTerminalSubmit = (e: React.FormEvent) => {
@@ -140,6 +138,7 @@ export default function App() {
 
     setTerminalLogs(newLogs);
     setTerminalInput('');
+    setTimeout(() => terminalBottomRef.current?.scrollIntoView({ behavior: 'smooth' }), 50);
   };
 
   const executeShortcut = (cmd: string) => {
